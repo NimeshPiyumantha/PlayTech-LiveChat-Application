@@ -6,7 +6,7 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class Initilizer extends Application {
+public class ServerApplication extends Application {
 
     public static void main(String[] args) {
         launch(args);
