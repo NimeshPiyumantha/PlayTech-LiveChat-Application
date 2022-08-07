@@ -1,26 +1,36 @@
 #navigateBar {
-    -fx-background-color: #2c3e50;
+    -fx-background-color: #202C33;
 }
 
 #bgColor {
-    -fx-background-color: #34495e;
+    -fx-background-color: #ecf0f1;
 }
 
 #test {
     -fx-fill: #ecf0f1;
     -fx-font-family: "Bodoni MT", sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 25;
+    -fx-font-size: 18;
+    -fx-background-radius: 15px;
 }
 
-#btnSever {
-    -fx-background-color: #16a085;
+#btnSave {
+    -fx-background-color: #2ecc71;
     -fx-fill: #ecf0f1;
     -fx-font-family: "Bodoni MT Black", sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 20;
+    -fx-font-size: 18;
     -fx-background-radius: 10;
 }
 
-.anchorPane3 {
+#btnLogin{
+    -fx-background-color: #1abc9c;
+    -fx-fill:#2c3e50 ;
+    -fx-background-radius: 15px;
+}
+
+#btnSign{
+    -fx-background-color: #27ae60;
+    -fx-fill:#2c3e50 ;
+    -fx-background-radius: 15px;
 }
