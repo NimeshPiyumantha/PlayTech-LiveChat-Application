@@ -47,6 +47,9 @@ public class CreateNewUserAccountController {
     public AnchorPane loginPane;
     public AnchorPane signUpPane;
 
+    /**
+     * Create Account Code
+     */
     public void CreateAccountOnAction(ActionEvent actionEvent) {
         if (!txtUserName.getText().equalsIgnoreCase("")
                 && !txtPassword.getText().equalsIgnoreCase("")
@@ -89,6 +92,9 @@ public class CreateNewUserAccountController {
         }
     }
 
+    /**
+     * Create Account Code Opacity
+     */
     private void setOpacity(Label a, Label b, Label c, Label d) {
         if (a.getOpacity() == 1 || b.getOpacity() == 1 || c.getOpacity() == 1 || d.getOpacity() == 1) {
             a.setOpacity(0);
@@ -98,12 +104,9 @@ public class CreateNewUserAccountController {
         }
     }
 
-    private void setOpacity(Label controlRegLabel, Label checkEmail, Label nameExists) {
-        controlRegLabel.setOpacity(0);
-        checkEmail.setOpacity(0);
-        nameExists.setOpacity(0);
-    }
-
+    /**
+     * Make Default
+     */
     private void makeDefault() {
         txtUserName.setText("");
         txtPassword.setText("");
@@ -113,6 +116,18 @@ public class CreateNewUserAccountController {
         setOpacity(controlRegLabel, checkEmail, nameExists);
     }
 
+    /**
+     * Make Default Opacity
+     */
+    private void setOpacity(Label controlRegLabel, Label checkEmail, Label nameExists) {
+        controlRegLabel.setOpacity(0);
+        checkEmail.setOpacity(0);
+        nameExists.setOpacity(0);
+    }
+
+    /**
+     * Check User code
+     */
     private boolean checkUser(String username) {
         for (User user : users) {
             if (user.name.equalsIgnoreCase(username)) {
@@ -122,6 +137,9 @@ public class CreateNewUserAccountController {
         return true;
     }
 
+    /**
+     * Check Email code
+     */
     private boolean checkEmail(String email) {
         for (User user : users) {
             if (user.email.equalsIgnoreCase(email)) {
@@ -131,6 +149,9 @@ public class CreateNewUserAccountController {
         return true;
     }
 
+    /**
+     * Client Management Controller
+     */
     public void changeWindow() {
         try {
             Stage stage = (Stage) userName.getScene().getWindow();
@@ -147,6 +168,9 @@ public class CreateNewUserAccountController {
         }
     }
 
+    /**
+     * User Login Controller
+     */
     public void loginOnAction(ActionEvent actionEvent) {
         username = userName.getText();
         password = passWord.getText();
@@ -167,6 +191,9 @@ public class CreateNewUserAccountController {
         }
     }
 
+    /**
+     * Sign In account to Sign Up account to back button controller
+     */
     public void backButtonOnAction(MouseEvent mouseEvent) {
         if (mouseEvent.getSource() == btnBack) {
             new FadeIn(loginPane).play();
@@ -177,6 +204,9 @@ public class CreateNewUserAccountController {
         txtEmail.setText("");
     }
 
+    /**
+     * Sign Up Button Controller code
+     */
     public void signUpInOnAction(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(btnSignUp)) {
             new FadeIn(signUpPane).play();
