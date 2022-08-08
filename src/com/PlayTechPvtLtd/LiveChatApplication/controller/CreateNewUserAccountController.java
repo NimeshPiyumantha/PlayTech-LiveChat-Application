@@ -130,4 +130,47 @@ public class CreateNewUserAccountController {
         return true;
     }
 
+    public void changeWindow() {
+        try {
+            Stage stage = (Stage) userName.getScene().getWindow();
+            Parent root = FXMLLoader.load(this.getClass().getResource("/com/PlayTechPvtLtd/LiveChatApplication/view/ClientManagemant.fxml"));
+            stage.setScene(new Scene(root, 330, 560));
+            stage.setTitle(username + "");
+            stage.setOnCloseRequest(event -> {
+                System.exit(0);
+            });
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loginOnAction(ActionEvent actionEvent) {
+        username = userName.getText();
+        password = passWord.getText();
+        boolean login = false;
+        for (User x : users) {
+            if (x.name.equalsIgnoreCase(username) && x.password.equalsIgnoreCase(password)) {
+                login = true;
+                loggedInUser.add(x);
+                System.out.println(x.name);
+                gender = x.gender;
+                break;
+            }
+        }
+        if (login) {
+            changeWindow();
+        } else {
+            loginNotifier.setOpacity(1);
+        }
+    }
+
+    public void backButtonOnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void signUpInOnAction(ActionEvent actionEvent) {
+
+    }
 }
