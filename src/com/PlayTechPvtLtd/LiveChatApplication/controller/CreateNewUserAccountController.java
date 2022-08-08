@@ -22,7 +22,8 @@ import java.util.ArrayList;
 public class CreateNewUserAccountController {
     public static String username, password, gender;
     public static ArrayList<User> loggedInUser = new ArrayList<>();
-    public static ArrayList<User> users = new ArrayList<User>();
+    public static ArrayList<User> users = new ArrayList<>();
+
     public TextField txtUserName;
     public PasswordField txtPassword;
     public TextField txtEmail;
