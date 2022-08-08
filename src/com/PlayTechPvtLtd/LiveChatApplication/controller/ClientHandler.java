@@ -15,6 +15,9 @@ public class ClientHandler extends Thread {
     private BufferedReader reader;
     private PrintWriter writer;
 
+    /**
+     * Client Handle code
+     */
     public ClientHandler(Socket socket, ArrayList<ClientHandler> clients) {
         try {
             this.socket = socket;
@@ -29,7 +32,6 @@ public class ClientHandler extends Thread {
     @Override
     public void run() {
         try {
-
             while ((message = reader.readLine()) != null) {
                 if (message.equalsIgnoreCase("exit")) {
                     break;
