@@ -171,6 +171,16 @@ public class CreateNewUserAccountController {
     }
 
     public void signUpInOnAction(ActionEvent actionEvent) {
-
+        if (actionEvent.getSource().equals(btnSignUp)) {
+            new FadeIn(signUpPane).play();
+            signUpPane.toFront();
+        }
+        if (actionEvent.getSource().equals(btnLogin)) {
+            new FadeIn(loginPane).play();
+            loginPane.toFront();
+        }
+        loginNotifier.setOpacity(0);
+        userName.setText("");
+        passWord.setText("");
     }
 }
