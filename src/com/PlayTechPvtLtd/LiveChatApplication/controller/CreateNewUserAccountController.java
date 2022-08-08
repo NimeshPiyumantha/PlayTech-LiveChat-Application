@@ -167,7 +167,13 @@ public class CreateNewUserAccountController {
     }
 
     public void backButtonOnAction(MouseEvent mouseEvent) {
-
+        if (mouseEvent.getSource() == btnBack) {
+            new FadeIn(loginPane).play();
+            loginPane.toFront();
+        }
+        txtUserName.setText("");
+        txtPassword.setText("");
+        txtEmail.setText("");
     }
 
     public void signUpInOnAction(ActionEvent actionEvent) {
