@@ -1,6 +1,7 @@
 package com.PlayTechPvtLtd.LiveChatApplication.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -10,11 +11,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * @author : Nimesh Piyumantha
  * @since : 0.1.0
  **/
-public class ClientManagemantController {
+public class ClientManagemantController extends Thread implements Initializable {
 
     public Label clientName;
     public ImageView imgMenu;
@@ -48,5 +52,10 @@ public class ClientManagemantController {
     }
 
     public void btnSendOnAction(MouseEvent mouseEvent) {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
