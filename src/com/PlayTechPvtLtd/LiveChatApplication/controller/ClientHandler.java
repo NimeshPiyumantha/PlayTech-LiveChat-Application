@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 
 public class ClientHandler extends Thread {
@@ -40,6 +41,7 @@ public class ClientHandler extends Thread {
                     cl.writer.println(message);
                 }
             }
+        } catch (SocketException ignore) {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

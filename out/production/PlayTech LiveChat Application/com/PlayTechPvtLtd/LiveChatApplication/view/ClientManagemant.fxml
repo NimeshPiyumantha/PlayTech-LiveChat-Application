@@ -34,6 +34,11 @@
             </image>
          </ImageView>
          <Circle fx:id="showProPic" fill="#252123" layoutX="37.0" layoutY="35.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+         <Label layoutX="97.0" layoutY="50.0" text="Online" textFill="#ee0707">
+            <font>
+               <Font name="Bodoni MT Black Italic" size="14.0" />
+            </font>
+         </Label>
       </children>
    </AnchorPane>
    <AnchorPane id="bgColor" fx:id="profilePane" layoutY="74.0" prefHeight="496.0" prefWidth="340.0" stylesheets="@assests/styles/Sheat.css">
