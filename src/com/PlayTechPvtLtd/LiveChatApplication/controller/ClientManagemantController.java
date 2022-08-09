@@ -142,7 +142,18 @@ public class ClientManagemantController extends Thread implements Initializable 
     }
 
     public void saveImageOnAction(ActionEvent actionEvent) {
-
+        if (saveControl) {
+            try {
+                BufferedImage bufferedImage = ImageIO.read(filePath);
+                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                imgPhotoMain.setImage(image);
+                showProPic.setFill(new ImagePattern(image));
+                saveControl = false;
+                fileChoosePath.setText("");
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
+        }
     }
 
     public void sendMessageByKey(KeyEvent keyEvent) {
