@@ -163,11 +163,21 @@ public class ClientManagemantController extends Thread implements Initializable 
     }
 
     public void send() {
-
+        String msg = txtMassage.getText();
+        writer.println(CreateNewUserAccountController.username + ": " + msg);
+        txtArea.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        txtArea.appendText("Me: " + msg + "\n");
+        txtMassage.setText("");
+        if (msg.equalsIgnoreCase("BYE") || (msg.equalsIgnoreCase("logout"))) {
+            System.exit(0);
+        }
     }
 
     public void btnSendOnAction(MouseEvent mouseEvent) {
-
+        send();
+        for (User user : users) {
+            System.out.println(user.name);
+        }
     }
 
     @Override
