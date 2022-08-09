@@ -133,7 +133,12 @@ public class ClientManagemantController extends Thread implements Initializable 
     }
 
     public void chooseImageButtonOnAction(ActionEvent actionEvent) {
-
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Image");
+        this.filePath = fileChooser.showOpenDialog(stage);
+        fileChoosePath.setText(filePath.getPath());
+        saveControl = true;
     }
 
     public void saveImageOnAction(ActionEvent actionEvent) {
