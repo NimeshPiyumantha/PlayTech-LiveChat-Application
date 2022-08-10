@@ -130,6 +130,11 @@ public class ClientManagemantController extends Thread implements Initializable 
     }
 
     public void imgCamaraOnAction(MouseEvent mouseEvent) {
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Image");
+        this.filePath = fileChooser.showOpenDialog(stage);
+        fileChoosePath.setText(filePath.getPath());
     }
 
     public void chooseImageButtonOnAction(ActionEvent actionEvent) {
