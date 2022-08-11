@@ -159,7 +159,7 @@ public class ClientManagemantController extends Thread implements Initializable 
      */
     private void imageSend() throws IOException {
 
-        BufferedImage bufferedImage = ImageIO.read(filePath);
+   /*     BufferedImage bufferedImage = ImageIO.read(filePath);
         try {
             ImageIO.write(bufferedImage, "png", socket.getOutputStream());
             System.out.println("Image should be sent!");
@@ -169,7 +169,7 @@ public class ClientManagemantController extends Thread implements Initializable 
             if (socket != null) {
             }
             System.out.println("Image sent and socket closed!");
-        }
+        }*/
     }
 
 
