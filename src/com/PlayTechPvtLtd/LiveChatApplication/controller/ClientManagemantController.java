@@ -22,6 +22,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
@@ -142,15 +143,35 @@ public class ClientManagemantController extends Thread implements Initializable 
     }
 
     /**
-     * Images Send Code
+     * Send Images chooser Code
      */
-    public void imgCamaraOnAction(MouseEvent mouseEvent) {
+    public void imgCamaraOnAction(MouseEvent mouseEvent) throws IOException, ClassNotFoundException, AWTException {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image");
         this.filePath = fileChooser.showOpenDialog(stage);
         fileChoosePath.setText(filePath.getPath());
+        imageSend();
     }
+
+    /**
+     * Images Send Code
+     */
+    private void imageSend() throws IOException {
+
+        BufferedImage bufferedImage = ImageIO.read(filePath);
+        try {
+            ImageIO.write(bufferedImage, "png", socket.getOutputStream());
+            System.out.println("Image should be sent!");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (socket != null) {
+            }
+            System.out.println("Image sent and socket closed!");
+        }
+    }
+
 
     /**
      * Profile image chooser Code
