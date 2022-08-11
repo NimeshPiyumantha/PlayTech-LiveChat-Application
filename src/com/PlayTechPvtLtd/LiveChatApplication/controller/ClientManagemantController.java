@@ -60,6 +60,9 @@ public class ClientManagemantController extends Thread implements Initializable 
     Socket socket;
     private File filePath;
 
+    /**
+     * Client Socket Code
+     */
     public void connectSocket() {
         try {
             socket = new Socket("localhost", 8000);
@@ -72,6 +75,9 @@ public class ClientManagemantController extends Thread implements Initializable 
         }
     }
 
+    /**
+     * Messages send using 2D array with Code
+     */
     @Override
     public void run() {
         try {
@@ -100,6 +106,9 @@ public class ClientManagemantController extends Thread implements Initializable 
         }
     }
 
+    /**
+     * Set Profile Details Code
+     */
     public void setProfile() {
         for (User user : users) {
             if (CreateNewUserAccountController.username.equalsIgnoreCase(user.name)) {
@@ -113,6 +122,9 @@ public class ClientManagemantController extends Thread implements Initializable 
         }
     }
 
+    /**
+     * Menu Controller Code
+     */
     public void imgMenuOnAction(MouseEvent mouseEvent) {
         if (mouseEvent.getSource().equals(imgMenu) && !toggleProfile) {
             new FadeIn(profilePane).play();
@@ -129,6 +141,9 @@ public class ClientManagemantController extends Thread implements Initializable 
         }
     }
 
+    /**
+     * Images Send Code
+     */
     public void imgCamaraOnAction(MouseEvent mouseEvent) {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
@@ -137,6 +152,9 @@ public class ClientManagemantController extends Thread implements Initializable 
         fileChoosePath.setText(filePath.getPath());
     }
 
+    /**
+     * Profile image chooser Code
+     */
     public void chooseImageButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
@@ -146,6 +164,9 @@ public class ClientManagemantController extends Thread implements Initializable 
         saveControl = true;
     }
 
+    /**
+     * Profile choose image save Code
+     */
     public void saveImageOnAction(ActionEvent actionEvent) {
         if (saveControl) {
             try {
@@ -161,12 +182,18 @@ public class ClientManagemantController extends Thread implements Initializable 
         }
     }
 
+    /**
+     * Send Messages Enter press Code
+     */
     public void sendMessageByKey(KeyEvent keyEvent) {
         if (keyEvent.getCode().toString().equals("ENTER")) {
             send();
         }
     }
 
+    /**
+     * Messages send Code
+     */
     public void send() {
         String msg = txtMassage.getText();
         writer.println(CreateNewUserAccountController.username + ": " + msg);
@@ -178,6 +205,9 @@ public class ClientManagemantController extends Thread implements Initializable 
         }
     }
 
+    /**
+     * Send Button Action Code
+     */
     public void btnSendOnAction(MouseEvent mouseEvent) {
         send();
         for (User user : users) {
@@ -185,6 +215,9 @@ public class ClientManagemantController extends Thread implements Initializable 
         }
     }
 
+    /**
+     * Male/Female 4to Initialize Code
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         showProPic.setStroke(Color.valueOf("#90a4ae"));
