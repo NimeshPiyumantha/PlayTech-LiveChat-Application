@@ -18,6 +18,9 @@ import java.util.ResourceBundle;
 public class EmojiManagementController implements Initializable {
     public AnchorPane emojiAnchorePane;
 
+    /**
+     * Emoji add Vbox label
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         VBox box = new VBox();
