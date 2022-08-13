@@ -28,7 +28,7 @@ public class EmojiManagementController implements Initializable {
         box.prefWidthProperty().bind(emojiAnchorePane.widthProperty());
         emojiAnchorePane.getChildren().add(box);
 
-        String testedString = new String("".getBytes(), StandardCharsets.UTF_8);
+        String testedString = new String("🙃 ☺".getBytes(), StandardCharsets.UTF_8);
 
         EmojisLabel emojisLabel = new EmojisLabel(testedString);
         emojisLabel.setPrefWidth(320);

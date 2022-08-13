@@ -4,9 +4,11 @@ import animatefx.animation.FadeIn;
 import com.PlayTechPvtLtd.LiveChatApplication.model.User;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -18,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -56,6 +59,7 @@ public class ClientManagemantController extends Thread implements Initializable 
     public boolean toggleChat = false, toggleProfile = false;
     public boolean saveControl = false;
     public AnchorPane emojiAnchorePane;
+    public ImageView emojiBtn;
 
     BufferedReader reader;
     PrintWriter writer;
@@ -218,8 +222,11 @@ public class ClientManagemantController extends Thread implements Initializable 
      */
     public void send() {
         String msg = txtMassage.getText();
+        emojiAnchorePane.getChildren().clear();
+        emojiAnchorePane.toBack();
         writer.println(CreateNewUserAccountController.username + ": " + msg);
         txtArea.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        txtArea.setFont(Font.font("Aller Light", 20));
         txtArea.appendText("Me: " + msg + "\n");
         txtMassage.setText("");
         if (msg.equalsIgnoreCase("BYE") || (msg.equalsIgnoreCase("logout"))) {
@@ -253,5 +260,18 @@ public class ClientManagemantController extends Thread implements Initializable 
         showProPic.setFill(new ImagePattern(image));
         clientName.setText(CreateNewUserAccountController.username);
         connectSocket();
+        emojiAnchorePane.toBack();
+    }
+
+    /**
+     * Select Emoji Pane Load
+     */
+    public void emojiBtnOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource = getClass().getResource("../view/EmojiController.fxml");
+        Parent load = FXMLLoader.load(resource);
+        emojiAnchorePane.getChildren().clear();
+        emojiAnchorePane.getChildren().add(load);
+
+        emojiAnchorePane.toFront();
     }
 }
