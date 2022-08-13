@@ -55,6 +55,7 @@ public class ClientManagemantController extends Thread implements Initializable 
 
     public boolean toggleChat = false, toggleProfile = false;
     public boolean saveControl = false;
+    public AnchorPane emojiAnchorePane;
 
     BufferedReader reader;
     PrintWriter writer;

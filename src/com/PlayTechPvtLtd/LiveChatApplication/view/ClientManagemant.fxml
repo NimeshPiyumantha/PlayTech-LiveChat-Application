@@ -121,6 +121,7 @@
                <Image url="@assests/images/attachment.png" />
             </image>
          </ImageView>
+         <AnchorPane fx:id="emojiAnchorePane" layoutX="10.0" layoutY="274.0" prefHeight="150.0" prefWidth="320.0" />
       </children>
    </AnchorPane>
 </AnchorPane>
