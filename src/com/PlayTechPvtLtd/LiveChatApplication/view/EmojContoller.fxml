@@ -3,11 +3,11 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="150.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.PlayTechPvtLtd.LiveChatApplication.controller.EmojiManagementController">
+<AnchorPane prefHeight="150.0" prefWidth="320.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.PlayTechPvtLtd.LiveChatApplication.controller.EmojiManagementController">
    <children>
-      <ScrollPane prefHeight="150.0" prefWidth="320.0">
+      <ScrollPane prefHeight="150.0" prefWidth="320.0" style="-fx-background-color: #bdc3c7;">
         <content>
-          <AnchorPane fx:id="emojiAnchorePane" minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="320.0" />
+          <AnchorPane fx:id="emojiAnchorePane" minHeight="0.0" minWidth="0.0" opacity="0.9" prefHeight="289.0" prefWidth="320.0" style="-fx-background-color: #bdc3c7;" />
         </content>
       </ScrollPane>
    </children>
