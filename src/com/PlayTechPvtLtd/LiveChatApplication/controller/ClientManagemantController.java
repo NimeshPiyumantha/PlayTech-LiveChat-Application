@@ -226,7 +226,7 @@ public class ClientManagemantController extends Thread implements Initializable 
         emojiAnchorePane.toBack();
         writer.println(CreateNewUserAccountController.username + ": " + msg);
         txtArea.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-        txtArea.setFont(Font.font("Aller Light", 20));
+        txtArea.setFont(Font.font("Aller Light", 17));
         txtArea.appendText("Me: " + msg + "\n");
         txtMassage.setText("");
         if (msg.equalsIgnoreCase("BYE") || (msg.equalsIgnoreCase("logout"))) {
