@@ -9,8 +9,12 @@ This is Network Programming Module Course Work.
 
 
 ##
+![alt text](https://github.com/NimeshPiyumantha/PlayTech-LiveChat-Application/blob/master/src/com/PlayTechPvtLtd/LiveChatApplication/view/assests/screenshorts/login.png)
+##
 
 ##
+![alt text](https://github.com/NimeshPiyumantha/PlayTech-LiveChat-Application/blob/master/src/com/PlayTechPvtLtd/LiveChatApplication/view/assests/screenshorts/chat.png)
+###  
 
 ###  
 ### Clone this repository ✅
