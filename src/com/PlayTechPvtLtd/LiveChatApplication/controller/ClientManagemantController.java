@@ -2,30 +2,33 @@ package com.PlayTechPvtLtd.LiveChatApplication.controller;
 
 import animatefx.animation.FadeIn;
 import com.PlayTechPvtLtd.LiveChatApplication.model.User;
+import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.NodeOrientation;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
@@ -51,7 +54,6 @@ public class ClientManagemantController extends Thread implements Initializable 
     public TextField fileChoosePath;
     public AnchorPane chatPane;
     public TextField txtMassage;
-    public TextArea txtArea;
     public ImageView imgSend;
     public ImageView imgPhoto;
     public Circle showProPic;
@@ -60,6 +62,7 @@ public class ClientManagemantController extends Thread implements Initializable 
     public boolean saveControl = false;
     public AnchorPane emojiAnchorePane;
     public ImageView emojiBtn;
+    public VBox vBox;
 
     BufferedReader reader;
     PrintWriter writer;
@@ -96,13 +99,90 @@ public class ClientManagemantController extends Thread implements Initializable 
                 for (int i = 1; i < tokens.length; i++) {
                     fullMsg.append(tokens[i]);
                 }
+
+                String[] massageAr = msg.split(" ");
+                String string = "";
+                for (int i = 0; i < massageAr.length - 1; i++) {
+                    string += massageAr[i + 1] + " ";
+                }
+
+                Text text = new Text(string);
+                String fChar = "";
+
+                if (string.length() > 3) {
+                    fChar = string.substring(0, 3);
+                }
+
+                if (fChar.equalsIgnoreCase("img")) {
+                    string = string.substring(3, string.length() - 1);
+
+                    File file = new File(string);
+                    Image image = new Image(file.toURI().toString());
+
+                    ImageView imageView = new ImageView(image);
+
+                    imageView.setFitWidth(70);
+                    imageView.setFitHeight(70);
+
+                    HBox hBox = new HBox(10);
+                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
+
+                    if (!cmd.equalsIgnoreCase(clientName.getText())) {
+                        vBox.setAlignment(Pos.TOP_LEFT);
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+
+                        Text text1 = new Text("  " + cmd + " :");
+                        hBox.getChildren().add(text1);
+                        hBox.getChildren().add(imageView);
+                    } else {
+                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                        hBox.getChildren().add(imageView);
+                        Text text1 = new Text(": Me ");
+                        hBox.getChildren().add(text1);
+                    }
+
+                    Platform.runLater(() -> vBox.getChildren().addAll(hBox));
+
+                } else {
+                    TextFlow tempTextFlow = new TextFlow();
+
+                    if (!cmd.equalsIgnoreCase(clientName.getText() + ":")) {
+                        Text name = new Text(cmd + " ");
+                        name.getStyleClass().add("name");
+                        tempTextFlow.getChildren().add(name);
+                    }
+
+                    tempTextFlow.getChildren().add(text);
+                    tempTextFlow.setMaxWidth(120);
+
+                    TextFlow textFlow = new TextFlow(tempTextFlow);
+                    textFlow.setStyle("-fx-background-color:#202C33;" + "-fx-background-radius: 20px");
+                    textFlow.setPadding(new Insets(5, 10, 5, 10));
+                    textFlow.setStyle("-fx-font-size: 17px;" + "-fx-font-color:#ecf0f1");
+                    HBox hBox = new HBox(10);
+                    hBox.setPadding(new Insets(5));
+
+
+                    if (!cmd.equalsIgnoreCase(clientName.getText() + ":")) {
+                        vBox.setAlignment(Pos.TOP_LEFT);
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+                        hBox.getChildren().add(textFlow);
+                    } else {
+                        Text text1 = new Text(fullMsg + ": Me");
+                        TextFlow textFlow1 = new TextFlow(text1);
+                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                        hBox.getChildren().add(textFlow1);
+                        textFlow1.setStyle("-fx-font-size: 17px");
+                    }
+                    Platform.runLater(() -> vBox.getChildren().addAll(hBox));
+                }
+
                 System.out.println(fullMsg);
                 if (cmd.equalsIgnoreCase(CreateNewUserAccountController.username + ":")) {
                     continue;
                 } else if (fullMsg.toString().equalsIgnoreCase("bye")) {
                     break;
                 }
-                txtArea.appendText(msg + "\n");
             }
             reader.close();
             writer.close();
@@ -111,6 +191,7 @@ public class ClientManagemantController extends Thread implements Initializable 
             e.printStackTrace();
         }
     }
+
 
     /**
      * Set Profile Details Code
@@ -150,33 +231,18 @@ public class ClientManagemantController extends Thread implements Initializable 
     /**
      * Send Images chooser Code
      */
-    public void imgCamaraOnAction(MouseEvent mouseEvent) throws IOException, ClassNotFoundException, AWTException {
-        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Image");
-        this.filePath = fileChooser.showOpenDialog(stage);
-        fileChoosePath.setText(filePath.getPath());
-        imageSend();
-    }
-
-    /**
-     * Images Send Code
-     */
-    private void imageSend() throws IOException {
-
-   /*     BufferedImage bufferedImage = ImageIO.read(filePath);
+    public void imgCamaraOnAction(MouseEvent mouseEvent) {
         try {
-            ImageIO.write(bufferedImage, "png", socket.getOutputStream());
-            System.out.println("Image should be sent!");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            if (socket != null) {
-            }
-            System.out.println("Image sent and socket closed!");
-        }*/
+            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open Image");
+            this.filePath = fileChooser.showOpenDialog(stage);
+            writer.println(clientName.getText() + " " + "img" + filePath.getPath());
+            writer.flush();
+        } catch (NullPointerException e) {
+            System.out.println("Image is not Selected!");
+        }
     }
-
 
     /**
      * Profile image chooser Code
@@ -225,9 +291,6 @@ public class ClientManagemantController extends Thread implements Initializable 
         emojiAnchorePane.getChildren().clear();
         emojiAnchorePane.toBack();
         writer.println(CreateNewUserAccountController.username + ": " + msg);
-        txtArea.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-        txtArea.setFont(Font.font("Aller Light", 17));
-        txtArea.appendText("Me: " + msg + "\n");
         txtMassage.setText("");
         if (msg.equalsIgnoreCase("BYE") || (msg.equalsIgnoreCase("logout"))) {
             System.exit(0);
