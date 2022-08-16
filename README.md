@@ -1,19 +1,41 @@
 # PlayTech-LiveChat-Application
 This is Network Programming Module Course Work.
-* Live Chat Application 
+* Play Tech Pvt Ltd Live Chat Application.
 
-### Stocket-Programming
+### Socket-Programming
 * Java
 * CSS
-* Stocket-Programming
+* Java Socket
+* Java Threads
 
 
-## Chat Application  Login 
+## Chat Application  Login
 ![alt text](https://github.com/NimeshPiyumantha/PlayTech-LiveChat-Application/blob/master/src/com/PlayTechPvtLtd/LiveChatApplication/view/assests/screenshorts/login.png)
 ##
 
 ## Chat Application Chat Interfaces
 ![alt text](https://github.com/NimeshPiyumantha/PlayTech-LiveChat-Application/blob/master/src/com/PlayTechPvtLtd/LiveChatApplication/view/assests/screenshorts/chat.png)
+##
+
+### System Requirements
+###
+* Users can send or receive messages.
+* Chats can be updated with every message sent simultaneously with all users.
+* Messages can send text, Unicode characters, emojis and images.
+* The chat interface can be minimized until it is needed to avoid disturbances to the work of the
+  users.
+##
+
+
+### How do you run an application on your PC ?
+###
+* Step 1 : Run ServerApplication.java
+* Step 2 : Run the ClientApplication (only after running Server.java)
+* Step 3 : Got IntelliJ Idea Edit Configuration > Modify Option > Allow Multiple Instance.
+* Step 4 : Run the ClientApplication (After Following Step 3 )
+* Step 5 : Click Sign up Button and Create New Account.
+* Step 6 : Click Sign In Button or Back Ui and Enter the Username & Password.
+* Step 7 : Chat and Enjoyed your Friends.
 ##
 
 ###  
