@@ -156,12 +156,10 @@ public class ClientManagemantController extends Thread implements Initializable 
                     tempTextFlow.setMaxWidth(120);
 
                     TextFlow textFlow = new TextFlow(tempTextFlow);
-                    textFlow.setStyle("-fx-background-color:#202C33;" + "-fx-background-radius: 20px");
+                    textFlow.setStyle("-fx-background-color:#ff6b81;" + "-fx-background-radius: 20px;"+"-fx-font-size: 17px;");
                     textFlow.setPadding(new Insets(5, 10, 5, 10));
-                    textFlow.setStyle("-fx-font-size: 17px;" + "-fx-font-color:#ecf0f1");
                     HBox hBox = new HBox(10);
                     hBox.setPadding(new Insets(5));
-
 
                     if (!cmd.equalsIgnoreCase(clientName.getText() + ":")) {
                         vBox.setAlignment(Pos.TOP_LEFT);
@@ -172,7 +170,8 @@ public class ClientManagemantController extends Thread implements Initializable 
                         TextFlow textFlow1 = new TextFlow(text1);
                         hBox.setAlignment(Pos.BOTTOM_RIGHT);
                         hBox.getChildren().add(textFlow1);
-                        textFlow1.setStyle("-fx-font-size: 17px");
+                        textFlow1.setStyle("-fx-background-color:#7bed9f;" + "-fx-background-radius: 20px;"+"-fx-font-size: 17px;");
+                        textFlow1.setPadding(new Insets(5, 10, 5, 10));
                     }
                     Platform.runLater(() -> vBox.getChildren().addAll(hBox));
                 }
